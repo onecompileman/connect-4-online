@@ -24,12 +24,27 @@ export class InGameComponent implements OnInit {
     this.timeInterval = setInterval(() => this.time++, 1000);
   }
 
+  onResetGameClick() {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are trying to reset the game',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Reset game'
+    }).then(result => {
+      if (result.value) {
+        this.resetGame();
+      }
+    });
+  }
+
   columnSelected(element: HTMLElement, index: number, isPlayer: boolean) {
     if (this.isPlayerTurn === isPlayer) {
       const availableSlot = this.getAvailableSlot(index);
 
       if (availableSlot) {
-        // const x = availableSlot.element.offsetLeft + element.clientWidth * 0.2;
         const y =
           availableSlot.element.offsetTop -
           element.offsetTop +
