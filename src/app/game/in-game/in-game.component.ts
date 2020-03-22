@@ -60,7 +60,7 @@ export class InGameComponent implements OnInit {
         if (this.isPlayerTurn && !isGameEnded) {
           setTimeout(() => {
             this.aiMove();
-          }, 1200);
+          }, 700);
         }
 
         this.isPlayerTurn = false;
@@ -100,12 +100,12 @@ export class InGameComponent implements OnInit {
           title: 'Game Over!',
           allowOutsideClick: false,
           html: `
-          <h5>AI Win!!</h5>
+          <h4>AI Win!!</h4>
           <p>Game Created by: <a href="https://onecompileman.com">Stephen Vinuya</a></p>
           <p>Repo: <a href="https://github.com/onecompileman/connect-4-online" target="_blank">https://github.com/onecompileman/connect-4-online</a>
         `
         }).then(() => this.resetGame());
-      }, 1000);
+      }, 1500);
 
       return true;
     }
@@ -117,12 +117,12 @@ export class InGameComponent implements OnInit {
           title: 'Congratulations!',
           allowOutsideClick: false,
           html: `
-          <h5>You Wins!!</h5>
+          <h4>You Wins!!</h4>
           <p>Game Created by: <a href="https://onecompileman.com">Stephen Vinuya</a></p>
           <p>Repo: <a href="https://github.com/onecompileman/connect-4-online" target="_blank">https://github.com/onecompileman/connect-4-online</a>
         `
         }).then(() => this.resetGame());
-      }, 1000);
+      }, 1500);
 
       return true;
     }
@@ -134,12 +134,12 @@ export class InGameComponent implements OnInit {
           title: "It's a tie!",
           allowOutsideClick: false,
           html: `
-          <h5>Game Draw!</h5>
+          <h4>Game Draw!</h4>
           <p>Game Created by: <a href="https://onecompileman.com">Stephen Vinuya</a></p>
           <p>Repo: <a href="https://github.com/onecompileman/connect-4-online" target="_blank">https://github.com/onecompileman/connect-4-online</a>
         `
         }).then(() => this.resetGame());
-      }, 1000);
+      }, 1500);
 
       return true;
     }
@@ -187,7 +187,7 @@ export class InGameComponent implements OnInit {
             chipCount++;
 
             if (chipCount === 4) {
-              for (let i = r; i >= r - 4; i--) {
+              for (let i = r; i > r - 4; i--) {
                 this.gameBoard[i][c].classList.add('oc4-in-game__chip-green');
               }
               return true;

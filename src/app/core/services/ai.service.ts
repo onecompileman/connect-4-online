@@ -286,7 +286,7 @@ export class AIService {
 
           if (index !== -1) {
             const cR = i + index;
-            const cC = i - index - c;
+            const cC = Math.abs(i - index - c);
 
             if (cR < 5) {
               if (gameBoard[cR + 1][cC] !== '') {
@@ -327,13 +327,15 @@ export class AIService {
           return false;
         }).length;
 
+        console.log(row4);
+
         if (aiChipsCount === columnCount - 1) {
           const index = row4.findIndex(r4 => r4 === '');
           console.log(row4);
 
           if (index !== -1) {
             const cR = i + index + r;
-            const cC = i - index;
+            const cC = 6 - i - index;
             console.log(cC + ' ' + cR);
 
             if (cR < 5) {
