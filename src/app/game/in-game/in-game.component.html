@@ -1,0 +1,61 @@
+<div class="oc4-in-game">
+  <div class="oc4-in-game__container">
+    <div class="oc4-in-game__top-bar">
+      <div class="oc4-in-game__actions">
+        <div class="oc4-in-game__time">
+          <img
+            class="oc4-in-game__icon"
+            src="assets/icons/time.png"
+            height="42"
+            alt="Time"
+          />
+          <h3>: {{ time }}</h3>
+        </div>
+        <h1>{{ isPlayerTurn ? 'Your Turn' : "AI's Turn" }}</h1>
+        <img
+          class="oc4-in-game__icon"
+          src="assets/icons/reset.png"
+          height="42"
+          alt="Reset"
+        />
+      </div>
+    </div>
+    <div class="oc4-in-game__row">
+      <div
+        *ngFor="let col of gameColumns; let c = index"
+        id="colHeader{{ c }}"
+        class="oc4-in-game__col-header"
+      >
+        <div
+          [hidden]="isPlayerTurn"
+          *ngFor="let chip of maxChipsPerCol"
+          class="oc4-in-game__turn-chip-red"
+          id="aiChip"
+        ></div>
+
+        <div
+          [hidden]="!isPlayerTurn"
+          *ngFor="let chip of maxChipsPerCol"
+          class="oc4-in-game__turn-chip-yellow"
+          id="playerChip"
+          (click)="columnSelected($event.target, c, true)"
+        ></div>
+      </div>
+    </div>
+    <!-- Game Board -->
+    <div class="oc4-in-game__game-container">
+      <div
+        *ngFor="let row of gameBoard; let r = index"
+        class="oc4-in-game__row"
+      >
+        <div
+          *ngFor="let col of row; let c = index"
+          id="{{ r }}-{{ c }}"
+          class="oc4-in-game__col"
+        >
+          <div class="oc4-in-game__chip-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

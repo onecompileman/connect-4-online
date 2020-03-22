@@ -1,0 +1,156 @@
+@import '~src/assets/scss/config';
+@import '~src/assets/scss/theme-config';
+
+.#{$style-prefix}-in-game {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: $light2;
+  font-family: Arial;
+
+  @media screen and (max-width: 480px) {
+    justify-content: center;
+  }
+
+  &__top-bar {
+    color: $dark;
+    justify-content: center;
+  }
+
+  &__turn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__time {
+    display: flex;
+  }
+
+  &__game-container {
+    padding: 2px;
+    // background-color: $primary;
+    overflow: hidden;
+    border: 5px solid darken($primary, 0.8);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.3);
+
+    @media screen and (max-width: 480px) {
+      border-width: 2px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__col,
+  &__col-header {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    // background-color: $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s linear;
+    @media screen and (max-width: 480px) {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  &__chip-container {
+    // background-color: $light2;
+    box-shadow: 0 0 0 32px $primary;
+    height: 50px;
+    z-index: 99;
+    width: 50px;
+    border-radius: 100%;
+
+    @media screen and (max-width: 480px) {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  &__turn-chip-red,
+  &__turn-chip-yellow {
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: 1s ease-in;
+
+    @media screen and (max-width: 480px) {
+      margin-top: 3px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__turn-chip-red {
+    background-color: $danger;
+    border: 8px solid darken($danger, 10%);
+
+    @media screen and (max-width: 480px) {
+      border-width: 3px;
+    }
+  }
+
+  &__turn-chip-yellow {
+    background-color: $warning;
+    border: 8px solid darken($warning, 10%);
+
+    @media screen and (max-width: 480px) {
+      border-width: 3px;
+    }
+  }
+
+  &__col-header:hover &__turn-chip-yellow {
+    opacity: 1;
+  }
+
+  &__chip-red,
+  &__chip-yellow {
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+  }
+
+  &__chip-red {
+    background-color: $danger;
+    border: 8px solid darken($danger, 10%);
+  }
+
+  &__chip-yellow {
+    background-color: $warning;
+    border: 8px solid darken($warning, 10%);
+  }
+
+  &__chip-green {
+    background-color: $success;
+    border: 8px solid darken($success, 10%);
+    @media screen and (max-width: 480px) {
+      border-width: 3px;
+    }
+  }
+}
+
+.placed {
+  display: block !important;
+}
