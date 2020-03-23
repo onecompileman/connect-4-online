@@ -258,7 +258,7 @@ export class AIService {
       }
     }
     // Scan right diagonal
-    for (let c = 6; c <= 2; c--) {
+    for (let c = 6; c >= 2; c--) {
       let ci = c;
       let r = 0;
 

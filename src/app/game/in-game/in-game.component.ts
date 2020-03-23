@@ -157,7 +157,7 @@ export class InGameComponent implements OnInit {
     return this.gameBoard.every(row => row.every(cell => cell !== ''));
   }
 
-  private isWin(chip) {
+  private isWin(chip): boolean {
     // Check horizontal win
     for (let r = 0; r < this.gameBoard.length; r++) {
       for (let c = 0; c <= 3; c++) {
@@ -305,8 +305,10 @@ export class InGameComponent implements OnInit {
         }
       }
     }
+
+    console.log('here');
     // Scan right diagonal
-    for (let c = 6; c <= 2; c--) {
+    for (let c = 6; c >= 2; c--) {
       let ci = c;
       let r = 0;
 
@@ -315,12 +317,14 @@ export class InGameComponent implements OnInit {
       while (ci >= 0 && r < 6) {
         const cell = this.gameBoard[r][ci];
         diagonalRow.push(cell);
+        console.log(diagonalRow);
         r++;
         ci--;
       }
 
       for (let i = 0; i <= diagonalRow.length - 4; i++) {
         const row4 = diagonalRow.slice(i, i + 4);
+        console.log(row4, 'here');
 
         const aiChipsCount = row4.filter(r4 => {
           if (r4 instanceof Object) {
@@ -369,6 +373,8 @@ export class InGameComponent implements OnInit {
         }
       }
     }
+
+    return false;
   }
 
   private aiMove() {
