@@ -29,6 +29,7 @@ export class InGameComponent implements OnInit {
       title: 'Are you sure?',
       text: 'You are trying to reset the game',
       icon: 'warning',
+      heightAuto: false,
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
@@ -45,10 +46,12 @@ export class InGameComponent implements OnInit {
       const availableSlot = this.getAvailableSlot(index);
 
       if (availableSlot) {
+        const multiplier = innerWidth <= 480 ? 0.42 : 0.3;
+
         const y =
           availableSlot.element.offsetTop -
           element.offsetTop +
-          element.clientHeight * 0.3;
+          element.clientHeight * multiplier;
 
         element.style.opacity = '1';
         element.classList.add('placed');
@@ -98,6 +101,7 @@ export class InGameComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Game Over!',
+          heightAuto: false,
           allowOutsideClick: false,
           html: `
           <h4>AI Win!!</h4>
@@ -116,6 +120,7 @@ export class InGameComponent implements OnInit {
           icon: 'success',
           title: 'Congratulations!',
           allowOutsideClick: false,
+          heightAuto: false,
           html: `
           <h4>You Wins!!</h4>
           <p>Game Created by: <a href="https://onecompileman.com">Stephen Vinuya</a></p>
@@ -133,6 +138,7 @@ export class InGameComponent implements OnInit {
           icon: 'warning',
           title: "It's a tie!",
           allowOutsideClick: false,
+          heightAuto: false,
           html: `
           <h4>Game Draw!</h4>
           <p>Game Created by: <a href="https://onecompileman.com">Stephen Vinuya</a></p>

@@ -2,6 +2,8 @@ body,
 html {
   margin: 0;
   padding: 0;
+  overscroll-behavior-y: contain;
+  overflow: hidden;
 }
 
 body {
